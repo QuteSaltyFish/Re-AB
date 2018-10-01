@@ -439,7 +439,18 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 276697785}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 435245310}
+        m_MethodName: SubmitPaint
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 1
     m_TypeName: UnityEngine.UI.Button+ButtonClickedEvent, UnityEngine.UI, Version=1.0.0.0,
       Culture=neutral, PublicKeyToken=null
 --- !u!114 &276697785
@@ -822,14 +833,14 @@ MonoBehaviour:
   - {fileID: 1893813476}
   - {fileID: 357633771}
   stroke:
-    uvFrom: {x: 0.9932409, y: 0.27724263}
-    posFrom: {x: 9.536016, y: 37.02807, z: 17.41054}
-    uvTo: {x: 0.10140183, y: 0.12756407}
-    posTo: {x: 20.786236, y: 39.050243, z: 18.669802}
-    unRepeatedUV: {x: 0.10140183, y: 0.12756407}
+    uvFrom: {x: 0.3725382, y: 0.4153117}
+    posFrom: {x: 16.612593, y: 37.97713, z: 14.595527}
+    uvTo: {x: 0.02293933, y: 0.08414215}
+    posTo: {x: 21.978703, y: 39.22896, z: 19.266037}
+    unRepeatedUV: {x: 0.02293933, y: 0.08414215}
     useTexcoord2: 0
     previousDelta: {x: 0, y: 0}
-    avgBrushSpeed: 8.3345226e-16
+    avgBrushSpeed: 0.00000008600682
     mouseDwn: 0
     firstStroke: 0
     mouseUp: 0
@@ -2117,7 +2128,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &2120133267
 RectTransform:
   m_ObjectHideFlags: 0
