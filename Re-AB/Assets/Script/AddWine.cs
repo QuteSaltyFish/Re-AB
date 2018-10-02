@@ -7,11 +7,15 @@ public class AddWine : MonoBehaviour {
     public int collisiontime;
     public int WineType;
     public WineUsage usewine;
-    private Transform water;
+    public Transform water;
+    private  Vector3 selfposition;
+    private Quaternion selfrotation;
 	// Use this for initialization
 	void Start () {
+        selfposition = this.transform.position;
+        selfrotation = this.transform.rotation;
         collisiontime = 0;
-        water = GetComponentInChildren<Transform>();
+        ;
 	}
 	
 	// Update is called once per frame
@@ -34,13 +38,28 @@ public class AddWine : MonoBehaviour {
     {
 
     }
-    private void OnCollisionStay(Collision collision)
+
+    private void OnTriggerEnter(Collider other)
     {
-        if (collision.gameObject == obj)
+        if (other.gameObject == obj)
         {
-            this.WaterdropStart();
+            collisiontime++;
             if (collisiontime == 0)
                 usewine.wineuse.Add(WineType);
+            //this.transform.position = selfposition;
+            //this.transform.rotation = selfrotation;
         }
     }
+    //private void OnCollisionEnter(Collision collision)
+    //{
+    //    if (collision.gameObject == obj)
+    //    {
+    //        this.WaterdropStart();
+    //        collisiontime++;
+    //        if (collisiontime == 0)
+    //            usewine.wineuse.Add(WineType);
+    //        this.transform.position = selfposition;
+    //        this.transform.rotation = selfrotation;
+    //    }
+    //}
 }
