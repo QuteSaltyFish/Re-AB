@@ -103,27 +103,6 @@ namespace Playtime_Painter
             GetComponent<Renderer>().material = m;
         }
 
-        public void SubmitPaint()
-        {
-            PlaytimePainter painter = gameObject.GetComponent<PlaytimePainter>();
-            ImageData image = painter.ImgData;
-
-            if (!painter.IsTerrainControlTexture())
-            {
-                string Orig = "";
-
-                if (image.texture2D != null)
-                {
-                    Orig = image.texture2D.GetPathWithout_Assets_Word();
-                    painter.ForceReimportMyTexture(Orig);
-                    image.SaveName = image.texture2D.name;
-                    GUI.FocusControl("dummy");
-                    if (painter.terrain != null)
-                        painter.UpdateShaderGlobals();
-                }
-            }
-        }
-
         public void OnEnable()
         {
             brush.TypeSet(false, BrushTypeSphere.Inst);
