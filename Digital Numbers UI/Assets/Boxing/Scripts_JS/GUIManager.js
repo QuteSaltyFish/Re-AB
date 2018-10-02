@@ -8,15 +8,8 @@ This script show the Life and Stamina bars for the Player and the Enemy.
 
 var barTexture : Texture2D;
 
-private var levelManagerScript : LevelManager;
 private var playerStatusScript : playerStatus;
 private var enemyStatusScript : AiScript;
-
-function Start () {
-	levelManagerScript = transform.GetComponent(LevelManager);
-	playerStatusScript = levelManagerScript.player.GetComponent(playerStatus);
-	enemyStatusScript = levelManagerScript.enemy.GetComponent(AiScript);
-}
 
 function OnGUI(){
 

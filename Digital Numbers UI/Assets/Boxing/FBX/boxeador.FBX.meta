@@ -106,13 +106,14 @@ ModelImporter:
     7400014: move_right
     7400016: move_backward
     7400018: move_forward_2
-    7400020: block
+    7400020: block_on
     7400022: 
     7400024: jableft_attacked
     7400026: jabright_attacked
     7400028: uppercutleft_attacked
     7400030: uppercutright_attacked
     7400032: dead
+    7400034: block_off
     9500000: //RootNode
     11100000: //RootNode
     13700000: Boxeador_GEO
@@ -139,8 +140,7 @@ ModelImporter:
     resampleCurves: 1
     optimizeGameObjects: 0
     motionNodeName: 
-    rigImportErrors: "Invalid Avatar Rig Configuration. Missing or invalid transform:\n\tRequired
-      human bone 'Hips' not found\n"
+    rigImportErrors: 
     rigImportWarnings: 
     animationImportErrors: 
     animationImportWarnings: 
@@ -167,7 +167,7 @@ ModelImporter:
       cycleOffset: 0
       loop: 0
       hasAdditiveReferencePose: 0
-      loopTime: 0
+      loopTime: 1
       loopBlend: 0
       loopBlendOrientation: 0
       loopBlendPositionY: 0
@@ -307,7 +307,7 @@ ModelImporter:
       cycleOffset: 0
       loop: 0
       hasAdditiveReferencePose: 0
-      loopTime: 0
+      loopTime: 1
       loopBlend: 0
       loopBlendOrientation: 0
       loopBlendPositionY: 0
@@ -391,7 +391,7 @@ ModelImporter:
       cycleOffset: 0
       loop: 0
       hasAdditiveReferencePose: 0
-      loopTime: 0
+      loopTime: 1
       loopBlend: 0
       loopBlendOrientation: 0
       loopBlendPositionY: 0
@@ -437,10 +437,10 @@ ModelImporter:
       maskSource: {instanceID: 0}
       additiveReferencePoseFrame: 0
     - serializedVersion: 16
-      name: block
+      name: block_on
       takeName: 
       firstFrame: 277
-      lastFrame: 290
+      lastFrame: 283
       wrapMode: 8
       orientationOffsetY: 0
       level: 0
@@ -582,6 +582,34 @@ ModelImporter:
       firstFrame: 291
       lastFrame: 308
       wrapMode: 8
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 0
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask: []
+      maskType: 3
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
+    - serializedVersion: 16
+      name: block_off
+      takeName: Take 001
+      firstFrame: 283
+      lastFrame: 290
+      wrapMode: 0
       orientationOffsetY: 0
       level: 0
       cycleOffset: 0

@@ -123,7 +123,6 @@ function Attack (attackType : String) {
 		}
 	}
 	
-	levelManagerScript.AddHit("player");
 	
 			
 }

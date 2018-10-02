@@ -5,29 +5,68 @@ using UnityEngine;
 public class EnemyAnimation : MonoBehaviour {
 
     public bool is_dead = false;
-    public bool is_walking = false;
+    public int move_dir = 0;
     private CharacterController m_characterController;
-    private Animation m_animation;
+    private Animator m_animator;
+
+    private int speed_v_ID;
+    private int jableft_trig_ID;
+    private int jabright_trig_ID;
+    private int uppercutleft_trig_ID;
+    private int uppercutright_trig_ID;
+    private int dead_trig_ID;
+    private int block_trig_ID;
 
     private void Awake(){
         m_characterController = GetComponent<CharacterController>();
-        m_animation = GetComponent<Animation>();
+        m_animator = GetComponent<Animator>();
+    }
+
+    private void Start()
+    {
+        speed_v_ID = Animator.StringToHash("speed_v");
+        jableft_trig_ID = Animator.StringToHash("jableft_trig");
+        jabright_trig_ID = Animator.StringToHash("jabright_trig");
+        uppercutleft_trig_ID = Animator.StringToHash("uppercutleft_trig");
+        uppercutright_trig_ID = Animator.StringToHash("uppercutright_trig");
+        dead_trig_ID = Animator.StringToHash("dead_trig");
+        block_trig_ID = Animator.StringToHash("block_trig");
     }
 
     private void Update(){
-        if(!is_dead){
-            if(is_walking){
-                if(m_characterController.velocity.z < 0){
-                    m_animation.Play("move_backward");
-                }else if(m_characterController.velocity.z > 0){
-                    m_animation.Play("move_forward");
+        if(is_dead) enabled = false;
+    }
+
+    public void Movement(){
+        if (move_dir == -1){
+            m_animator.SetFloat(speed_v_ID, -1);
+        }else if (move_dir == 1){
+            m_animator.SetFloat(speed_v_ID, 1);
+        }else {
+            m_animator.SetFloat(speed_v_ID, 0);
+        }
+    }
+
+    public void Hit(string current_hit_type){
+        switch (current_hit_type){
+            case "jableft":{
+                    m_animator.SetTrigger(jableft_trig_ID);
+                    break;
                 }
-            }else{
-                m_animation.Play("idle");
-            }
-        }else{
-            m_animation.Play("dead");
-            enabled = false;
+            case "jabright":{
+                    m_animator.SetTrigger(jabright_trig_ID);
+                    break;
+                }
+            case "uppercutleft":{
+                    m_animator.SetTrigger(uppercutleft_trig_ID);
+                    break;
+                }
+            case "uppercutright":{
+                    m_animator.SetTrigger(uppercutright_trig_ID);
+                    break;
+                }
+
+
         }
     }
 }

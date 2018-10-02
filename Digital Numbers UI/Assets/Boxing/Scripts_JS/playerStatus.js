@@ -53,8 +53,6 @@ function Damage(amount : float){
 		totalAmount = amount / 5;
 	}else{
 		totalAmount = amount;
-		// If the player was damaged, add one successful hit to the enemy in LevelManager.js.
-		levelManagerScript.AddSuccessfulHit("enemy");
 	}
 		
 	life -= totalAmount;
@@ -99,5 +97,4 @@ function Uncovered(){
 // Informs to LevelManager.js that the player was Knockout.
 function Dead(){
 	isDead = true;
-	levelManagerScript.KO("player");
 }

@@ -271,8 +271,7 @@ function Attack () {
 			GetComponent.<AudioSource>().PlayOneShot(attackMissed);
 		}
 	}
-	
-	levelManagerScript.AddHit("enemy");
+
 			
 }
 
@@ -284,8 +283,6 @@ function LoseLife(amount : float){
 		totalAmount = amount / 5;
 	}else{
 		totalAmount = amount;
-		// If the player was damaged, add one successful hit to the enemy in LevelManager.js.
-		levelManagerScript.AddSuccessfulHit("player");
 	}
 	
 	life -= totalAmount;
@@ -299,7 +296,6 @@ function LoseLife(amount : float){
 
 function Dead(){
 	isDead = true;
-	levelManagerScript.KO("enemy");
 }
 
 function Impact(){
