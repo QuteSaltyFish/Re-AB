@@ -6,13 +6,12 @@ public class EnemyAI : MonoBehaviour {
 
     /*
      * Audio Missing!
-     * What is levelManager?
      */
 
     [SerializeField]
     private BoxingManager boxing_manager;
 
-    [Header("Body for [CameraRig], head for Camera(head")]
+    [Header("Body for Camera(head), head for Camera(head)")]
     [SerializeField]
     private GameObject player_body;
     [SerializeField]
@@ -26,7 +25,7 @@ public class EnemyAI : MonoBehaviour {
 
     private float life = 100f;
     private float move_speed = 2.3f;
-    private float rot_speed = 5f;
+    private float rot_speed = 1.5f;
     private enemy_state current_state = enemy_state.idle;
 
     [SerializeField]
@@ -52,6 +51,9 @@ public class EnemyAI : MonoBehaviour {
     private float change_action_rate = 1f;
     private float change_action_timer;
 
+    [SerializeField]
+    private float enemy_attack_delay = 0.5f;
+
     private bool attack;
     public bool is_blocking = false;
 
@@ -75,6 +77,8 @@ public class EnemyAI : MonoBehaviour {
                                                       Quaternion.LookRotation(player_body.transform.position - transform.position), rot_speed * Time.deltaTime);
                 transform.eulerAngles = new Vector3 (0, transform.eulerAngles.y, 0);
             }
+
+            KeepDistance();         //In case that the enemy is to close to the player
 
             if (change_state_timer > 0){
                 can_change_state = false;
@@ -105,6 +109,17 @@ public class EnemyAI : MonoBehaviour {
                 }
             }
 
+        }
+    }
+
+    private void KeepDistance()
+    {
+        //make 2 transforms on the same platform
+        Vector3 tmp_m_pos = new Vector3(transform.position.x, player_body.transform.position.y, transform.position.z);
+
+        if(Vector3.Distance(player_body.transform.position, tmp_m_pos) <= 0.7f)
+        {
+            transform.Translate(transform.worldToLocalMatrix * new Vector3(0, 0, -0.05f));
         }
     }
 
@@ -205,6 +220,12 @@ public class EnemyAI : MonoBehaviour {
             boxing_manager.Player_got_hit();
         }
     }
+
+    //IEnumerator EnemyAttackDelay()
+    //{
+    //    yield return new WaitForSeconds();
+
+    //}
 
     private void Block(){
         int random_block = Random.Range(1, 11);

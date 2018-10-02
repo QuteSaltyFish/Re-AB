@@ -13,18 +13,18 @@ public class BoxingManager : MonoBehaviour {
     private int enemy_health;
 
     [SerializeField]
+    private Transform enemy_transform;
+    [SerializeField]
     private EnemyAI enemy_AI;
+    [SerializeField]
+    private EnemyAnimation enemy_animation;
 
     [SerializeField]
-    private GameObject gloveL_higher_checker;
+    private GameObject gloveL;
     [SerializeField]
-    private GameObject gloveL_lower_checker;
+    private GameObject gloveR;
     [SerializeField]
-    private GameObject gloveR_higher_checker;
-    [SerializeField]
-    private GameObject gloveR_lower_checker;
-    [SerializeField]
-    private float glove_checker_max_dist = 0.3f;
+    private float block_check_max_angle = 30f;
 
     [SerializeField]
     private int damage_to_player = 15;
@@ -40,7 +40,7 @@ public class BoxingManager : MonoBehaviour {
     [Header("Blank between 2 hits")]
     [SerializeField]
     private float enemy_hit_rate = 1f;
-    private float enemy_hit_timer;
+    private float enemy_hit_timer = 0f;
 
     private void Start()
     {
@@ -58,19 +58,20 @@ public class BoxingManager : MonoBehaviour {
             enemy_can_get_hit = true;
         }
 
-        Debug.Log(gloveL_higher_checker.transform.position);
-        Debug.Log(gloveL_lower_checker.transform.position);
+        
     }
-
 
     public void Player_got_hit(){
         bool player_is_blocking = false;
         //Block Judge
-        float delta_left_checkers = Mathf.Abs(gloveL_higher_checker.transform.position.y - gloveL_lower_checker.transform.position.y);
-        float delta_right_checkers = Mathf.Abs(gloveR_higher_checker.transform.position.y - gloveR_lower_checker.transform.position.y);
-        if(delta_left_checkers <= glove_checker_max_dist && delta_right_checkers <= glove_checker_max_dist){
-            player_is_blocking = true;
-        }
+        Vector3 from_dir_1 = -gloveL.transform.up;
+        Vector3 to_dir_1 = Vector3.up;
+        float delta_angle_1 = Vector3.Angle(from_dir_1, to_dir_1);
+        Vector3 from_dir_2 = -gloveR.transform.up;
+        Vector3 to_dir_2 = Vector3.up;
+        float delta_angle_2 = Vector3.Angle(from_dir_2, to_dir_2);
+        if (delta_angle_1 <= block_check_max_angle && delta_angle_2 <= block_check_max_angle) player_is_blocking = true;
+
         CalcPlayerDamage(player_is_blocking);
     }
 
@@ -97,8 +98,25 @@ public class BoxingManager : MonoBehaviour {
             Debug.Log("Enemy Damage Blocking!");
             enemy_health = Mathf.Clamp(enemy_health - damage_to_enemy_blocking, 0, enemy_health);
         }else{
-            Debug.Log("Enemy Damage!");
-            enemy_health = Mathf.Clamp(enemy_health - damage_to_enemy, 0, enemy_health);
+            if (enemy_can_get_hit)
+            {
+                if (hit_pos == "JabLeftWeakness")
+                {
+                    enemy_animation.GotHit("jableft");
+                }
+                else if (hit_pos == "JabRightWeakness")
+                {
+                    enemy_animation.GotHit("jabright");
+                }
+                else
+                {
+                    enemy_transform.Translate(transform.worldToLocalMatrix * new Vector3(0, 0, -0.5f));
+                }
+
+                Debug.Log("Enemy Damage!");
+                enemy_health = Mathf.Clamp(enemy_health - damage_to_enemy, 0, enemy_health);
+                enemy_hit_timer = enemy_hit_rate;
+            }
         }
 
         //update enemy_health_UI

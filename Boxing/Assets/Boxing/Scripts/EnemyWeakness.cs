@@ -12,7 +12,8 @@ public class EnemyWeakness : MonoBehaviour {
 
     private void Start()
     {
-        m_name = this.name;
+        m_name = this.gameObject.name;
+        Debug.Log(m_name);
     }
 
     private void OnTriggerEnter(Collider other)
