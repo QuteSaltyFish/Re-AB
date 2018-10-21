@@ -87,6 +87,7 @@ public class BoxingManager : MonoBehaviour {
         enemy_health = enemy_health_start;
         enemy_stamina = enemy_stamina_start;
         enemy_satis = enemy_satis_start;
+        enemy_satis_bar.Value = (int)enemy_satis;
     }
 
     private void Update()
@@ -163,14 +164,14 @@ public class BoxingManager : MonoBehaviour {
                     enemy_animation.GotHit("jabright");
                     enemy_health = Mathf.Clamp(enemy_health - e_health_damage_face, 0f, enemy_health);
                     enemy_stamina = Mathf.Clamp(enemy_stamina - e_stamina_damage_face, 0f, enemy_stamina);
-                    enemy_satis = Mathf.Clamp(enemy_satis + e_satis_inc_face, enemy_satis, 10f);
+                    enemy_satis = Mathf.Clamp(enemy_satis + e_satis_inc_face, enemy_satis, 100f);
                 }
                 else
                 {
                     enemy_transform.Translate(transform.worldToLocalMatrix * new Vector3(0, 0, -0.5f));
                     enemy_health = Mathf.Clamp(enemy_health - e_health_damage_body, 0f, enemy_health);
                     enemy_stamina = Mathf.Clamp(enemy_stamina - e_stamina_damage_body, 0f, enemy_stamina);
-                    enemy_satis = Mathf.Clamp(enemy_satis + e_satis_inc_body, enemy_satis, 10f);
+                    enemy_satis = Mathf.Clamp(enemy_satis + e_satis_inc_body, enemy_satis, 100f);
                 }
 
                 Debug.Log("Enemy Damage!");
@@ -197,8 +198,9 @@ public class BoxingManager : MonoBehaviour {
             enemy_animation.is_dead = true;
         }
 
-        if(enemy_health - 0f < Mathf.Epsilon){
+        if(enemy_health - 0f < Mathf.Epsilon && !(is_EndingA || is_EndingB)){
             //End C
+            is_EndingC = true;
             ending_dialogs.PlayEndingDialog("endingC");
             //Stop Motion
             enemy_AI.is_dead = true;

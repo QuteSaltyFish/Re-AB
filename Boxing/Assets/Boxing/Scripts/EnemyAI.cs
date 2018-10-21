@@ -21,7 +21,11 @@ public class EnemyAI : MonoBehaviour {
     private Animator m_animator;
     private CharacterController m_characterController;
 
-    private enum enemy_state { offensive, idle };
+    [SerializeField]
+    private float blank_before_start = 200f;
+    private float before_start_timer = 0f;
+
+    private enum enemy_state {offensive, idle};
 
     private float move_speed = 2.3f;
     private float rot_speed = 1.5f;
@@ -57,7 +61,8 @@ public class EnemyAI : MonoBehaviour {
     public bool is_blocking = false;
 
     private string current_hit_type;
-    public bool is_dead;
+    public bool is_dead = false;
+    private bool is_ready = false;
     private float damage_caused;
 
     private Vector3 move_direction = Vector3.zero;
@@ -68,9 +73,17 @@ public class EnemyAI : MonoBehaviour {
         m_animator = GetComponent<Animator>();
     }
 
+    private void Update() {
+        if (before_start_timer <= blank_before_start) {
+            before_start_timer += Time.deltaTime;
+        } else {
+            is_ready = true;
+        }
+    }
+
     private void FixedUpdate()
     {
-        if(!is_dead){
+        if(!is_dead && is_ready){
             if(player_body){
                 transform.rotation = Quaternion.Slerp(transform.rotation,
                                                       Quaternion.LookRotation(player_body.transform.position - transform.position), rot_speed * Time.deltaTime);

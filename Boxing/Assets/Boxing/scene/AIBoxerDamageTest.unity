@@ -3877,8 +3877,8 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 341441208}
   m_LocalRotation: {x: 0, y: -0.9208181, z: 0, w: 0.38999245}
-  m_LocalPosition: {x: 3.4722283, y: 0.13, z: -2.0748835}
-  m_LocalScale: {x: 0.040974114, y: 0.040974114, z: 0.040974114}
+  m_LocalPosition: {x: 3.4287, y: 0.08, z: -2.0986}
+  m_LocalScale: {x: 0.029741382, y: 0.029741384, z: 0.029741384}
   m_Children:
   - {fileID: 837301284}
   - {fileID: 1957029894}
@@ -3920,6 +3920,7 @@ MonoBehaviour:
   player_body: {fileID: 921361347}
   player_head: {fileID: 921361347}
   enemy_animation: {fileID: 341441217}
+  blank_before_start: 20
   attack_distance_min: 3
   move_distance_min: 2
   min_evade_angle: 15
@@ -8596,7 +8597,7 @@ GameObject:
   m_Layer: 0
   m_Name: Guante
   m_TagString: Untagged
-  m_Icon: {fileID: 4422084297763085224, guid: 0000000000000000d000000000000000, type: 0}
+  m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
@@ -13146,7 +13147,7 @@ GameObject:
   m_Layer: 0
   m_Name: Guante
   m_TagString: Untagged
-  m_Icon: {fileID: 4422084297763085224, guid: 0000000000000000d000000000000000, type: 0}
+  m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
@@ -18135,7 +18136,7 @@ GameObject:
   m_Layer: 0
   m_Name: BodyWeakness
   m_TagString: Weakness
-  m_Icon: {fileID: -5487077368411116049, guid: 0000000000000000d000000000000000, type: 0}
+  m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
@@ -18760,7 +18761,7 @@ GameObject:
   m_Layer: 0
   m_Name: JabRightWeakness
   m_TagString: Untagged
-  m_Icon: {fileID: -5442936267250999957, guid: 0000000000000000d000000000000000, type: 0}
+  m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
@@ -20012,7 +20013,7 @@ GameObject:
   m_Layer: 0
   m_Name: JabLeftWeakness
   m_TagString: Untagged
-  m_Icon: {fileID: -5442936267250999957, guid: 0000000000000000d000000000000000, type: 0}
+  m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
