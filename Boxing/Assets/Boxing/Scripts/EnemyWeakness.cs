@@ -20,6 +20,6 @@ public class EnemyWeakness : MonoBehaviour {
     {
         if (other.tag != "Glove") return;
         Debug.Log("HIT!");
-        boxing_manager.Enemy_got_hit(m_name);
+        boxing_manager.EnemyGotHit(m_name);
     }
 }
