@@ -21,15 +21,11 @@ public class EnemyAI : MonoBehaviour {
     private Animator m_animator;
     private CharacterController m_characterController;
 
-<<<<<<< HEAD
     [SerializeField]
     private float blank_before_start = 200f;
     private float before_start_timer = 0f;
 
     private enum enemy_state {offensive, idle};
-=======
-    private enum enemy_state { offensive, idle };
->>>>>>> c4d019e4e47b1057d3b94fdfe9e8dbbda2bfc3d0
 
     private float move_speed = 2.3f;
     private float rot_speed = 1.5f;
@@ -65,12 +61,8 @@ public class EnemyAI : MonoBehaviour {
     public bool is_blocking = false;
 
     private string current_hit_type;
-<<<<<<< HEAD
     public bool is_dead = false;
     private bool is_ready = false;
-=======
-    public bool is_dead;
->>>>>>> c4d019e4e47b1057d3b94fdfe9e8dbbda2bfc3d0
     private float damage_caused;
 
     private Vector3 move_direction = Vector3.zero;

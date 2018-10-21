@@ -18,19 +18,11 @@ public class BoxingManager : MonoBehaviour {
     private float enemy_health;
 
     public float enemy_stamina_start = 100f;
-<<<<<<< HEAD
     [SerializeField]
     private float enemy_stamina;
 
     public float enemy_satis_start = 0f;
     [SerializeField]
-=======
-    [SerializeField]
-    private float enemy_stamina;
-
-    public float enemy_satis_start = 0f;
-    [SerializeField]
->>>>>>> c4d019e4e47b1057d3b94fdfe9e8dbbda2bfc3d0
     private float enemy_satis;
 
     [SerializeField]
@@ -56,7 +48,6 @@ public class BoxingManager : MonoBehaviour {
     private float e_health_damage_face = 10f;
     [SerializeField]
     private float e_health_damage_body = 15f;
-<<<<<<< HEAD
     [SerializeField]
     private float e_health_restore_persec = 5f;
 
@@ -73,24 +64,6 @@ public class BoxingManager : MonoBehaviour {
     [SerializeField]
     private float e_satis_inc_face = 5f;
     [SerializeField]
-=======
-    [SerializeField]
-    private float e_health_restore_persec = 5f;
-
-    [SerializeField]
-    private float e_stamina_damage_face = 5f;
-    [SerializeField]
-    private float e_stamina_damage_body = 10f;
-    [SerializeField]
-    private float e_stamina_restore_persec = 5f;
-    [SerializeField]
-    private float e_stamina_restore_pretime = 2f;
-    private float e_stamina_restore_timer = 0f;
-
-    [SerializeField]
-    private float e_satis_inc_face = 5f;
-    [SerializeField]
->>>>>>> c4d019e4e47b1057d3b94fdfe9e8dbbda2bfc3d0
     private float e_satis_inc_body = 10f;
 
     private bool enemy_can_get_hit = true;
@@ -106,22 +79,15 @@ public class BoxingManager : MonoBehaviour {
     [SerializeField]
     private EndingDialogs ending_dialogs;
 
-<<<<<<< HEAD
     public BleedBehavior bleed_behavior;
 
-=======
->>>>>>> c4d019e4e47b1057d3b94fdfe9e8dbbda2bfc3d0
     private void Start()
     {
         player_health = player_health_start;
         enemy_health = enemy_health_start;
         enemy_stamina = enemy_stamina_start;
-<<<<<<< HEAD
         enemy_satis = enemy_satis_start;
         enemy_satis_bar.Value = (int)enemy_satis;
-=======
-        enemy_satis = enemy_satis_start;
->>>>>>> c4d019e4e47b1057d3b94fdfe9e8dbbda2bfc3d0
     }
 
     private void Update()
@@ -135,19 +101,12 @@ public class BoxingManager : MonoBehaviour {
         }
 
         if (enemy_can_get_hit && !enemy_AI.is_blocking){
-<<<<<<< HEAD
             if (!(is_EndingA || is_EndingB || is_EndingC)) {
                 EnemyRestoreHealth();
                 e_stamina_restore_timer += Time.deltaTime;
                 if (e_stamina_restore_timer >= e_stamina_restore_pretime) {
                     EnemyRestoreStamina();
                 }
-=======
-            EnemyRestoreHealth();
-            e_stamina_restore_timer += Time.deltaTime;
-            if (e_stamina_restore_timer >= e_stamina_restore_pretime){
-                EnemyRestoreStamina();
->>>>>>> c4d019e4e47b1057d3b94fdfe9e8dbbda2bfc3d0
             }
         }else{
             e_stamina_restore_timer = 0f;
@@ -198,33 +157,21 @@ public class BoxingManager : MonoBehaviour {
                     enemy_animation.GotHit("jableft");
                     enemy_health = Mathf.Clamp(enemy_health - e_health_damage_face, 0f, enemy_health);
                     enemy_stamina = Mathf.Clamp(enemy_stamina - e_stamina_damage_face, 0f, enemy_stamina);
-<<<<<<< HEAD
                     enemy_satis = Mathf.Clamp(enemy_satis + e_satis_inc_face, enemy_satis, 100f);
-=======
-                    enemy_satis = Mathf.Clamp(enemy_satis + e_stamina_damage_face, enemy_satis, 100f);
->>>>>>> c4d019e4e47b1057d3b94fdfe9e8dbbda2bfc3d0
                 }
                 else if (hit_pos == "JabRightWeakness")
                 {
                     enemy_animation.GotHit("jabright");
                     enemy_health = Mathf.Clamp(enemy_health - e_health_damage_face, 0f, enemy_health);
                     enemy_stamina = Mathf.Clamp(enemy_stamina - e_stamina_damage_face, 0f, enemy_stamina);
-<<<<<<< HEAD
                     enemy_satis = Mathf.Clamp(enemy_satis + e_satis_inc_face, enemy_satis, 100f);
-=======
-                    enemy_satis = Mathf.Clamp(enemy_satis + e_stamina_damage_face, enemy_satis, 10f);
->>>>>>> c4d019e4e47b1057d3b94fdfe9e8dbbda2bfc3d0
                 }
                 else
                 {
                     enemy_transform.Translate(transform.worldToLocalMatrix * new Vector3(0, 0, -0.5f));
                     enemy_health = Mathf.Clamp(enemy_health - e_health_damage_body, 0f, enemy_health);
                     enemy_stamina = Mathf.Clamp(enemy_stamina - e_stamina_damage_body, 0f, enemy_stamina);
-<<<<<<< HEAD
                     enemy_satis = Mathf.Clamp(enemy_satis + e_satis_inc_body, enemy_satis, 100f);
-=======
-                    enemy_satis = Mathf.Clamp(enemy_satis + e_stamina_damage_body, enemy_satis, 10f);
->>>>>>> c4d019e4e47b1057d3b94fdfe9e8dbbda2bfc3d0
                 }
 
                 Debug.Log("Enemy Damage!");
@@ -242,11 +189,7 @@ public class BoxingManager : MonoBehaviour {
         enemy_satis_bar.Value = (int)enemy_satis;
         
 
-<<<<<<< HEAD
         if (enemy_health > 0f && (enemy_stamina - 0f <= Mathf.Epsilon || 100f - enemy_satis <= Mathf.Epsilon) ){
-=======
-        if ( (enemy_health > 0f && (enemy_satis - 0f <= Mathf.Epsilon || enemy_satis - 100f <= Mathf.Epsilon) ) ){
->>>>>>> c4d019e4e47b1057d3b94fdfe9e8dbbda2bfc3d0
             is_EndingA = true;
             //End A
             ending_dialogs.PlayEndingDialog("endingA");
@@ -255,14 +198,9 @@ public class BoxingManager : MonoBehaviour {
             enemy_animation.is_dead = true;
         }
 
-<<<<<<< HEAD
         if(enemy_health - 0f < Mathf.Epsilon && !(is_EndingA || is_EndingB)){
             //End C
             is_EndingC = true;
-=======
-        if(enemy_health - 0f < Mathf.Epsilon){
-            //End C
->>>>>>> c4d019e4e47b1057d3b94fdfe9e8dbbda2bfc3d0
             ending_dialogs.PlayEndingDialog("endingC");
             //Stop Motion
             enemy_AI.is_dead = true;
