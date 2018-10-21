@@ -1,0 +1,18 @@
+fileFormatVersion: 2
+guid: c4eff8c0c53fff841b9b867e264860ac
+labels:
+- DamageBar
+- Bars
+- Bar
+- HealthBars
+- HealthBar
+- Health
+- Npc
+- Enemy
+- RPG
+timeCreated: 1436087453
+licenseType: Store
+NativeFormatImporter:
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

@@ -23,7 +23,6 @@ public class EnemyAI : MonoBehaviour {
 
     private enum enemy_state { offensive, idle };
 
-    private float life = 100f;
     private float move_speed = 2.3f;
     private float rot_speed = 1.5f;
     private enemy_state current_state = enemy_state.idle;
@@ -58,7 +57,7 @@ public class EnemyAI : MonoBehaviour {
     public bool is_blocking = false;
 
     private string current_hit_type;
-    private bool is_dead;
+    public bool is_dead;
     private float damage_caused;
 
     private Vector3 move_direction = Vector3.zero;
@@ -244,21 +243,4 @@ public class EnemyAI : MonoBehaviour {
         m_animator.SetBool("block", false);
     }
 
-    public void LoseLife(float damage){
-
-        float damage_result;
-
-        if(is_blocking){
-            damage_result = damage / 5;
-        }else{
-            damage_result = damage;
-        }
-
-        life -= damage_result;
-
-        if (life <= 0){
-            life = 0;
-            is_dead = true;
-        }
-    }
 }
