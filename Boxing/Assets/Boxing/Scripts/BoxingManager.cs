@@ -1,8 +1,11 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using SnazzlebotTools.ENPCHealthBars;
 
 public class BoxingManager : MonoBehaviour {
+
+    public ENPCHealthBar enemy_health_bar;
 
     public int player_health_start = 100;
     [SerializeField]
@@ -50,6 +53,7 @@ public class BoxingManager : MonoBehaviour {
 
     private void Update()
     {
+        enemy_health_bar.Value -= 1;
         if (enemy_hit_timer > 0){
             enemy_can_get_hit = false;
             enemy_hit_timer -= Time.deltaTime;

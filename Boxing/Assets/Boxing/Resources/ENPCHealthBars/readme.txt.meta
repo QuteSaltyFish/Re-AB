@@ -1,0 +1,17 @@
+fileFormatVersion: 2
+guid: 31aa24cda3428c0438f3a17f9bb1157e
+labels:
+- Health
+- HealthBar
+- Enemy
+- Npc
+- DamageBar
+- HealthBars
+- Bar
+- Bars
+timeCreated: 1434291564
+licenseType: Store
+TextScriptImporter:
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
